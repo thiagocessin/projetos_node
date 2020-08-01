@@ -5,7 +5,10 @@ function UsuariosDAO(connection){
 }
 
 UsuariosDAO.prototype.inserirUsuario = function(usuario){
+	console.log('cadastrar novo aluno');
+
 	this._connection.open(function(erro,mongoclient){//primeiro parametro da funcao dcallback é sempre o erro/retorna o client
+		
 		mongoclient.collection("usuarios",function(erro,collection){//permite manipular as coleções
 
 			var senha_criptografada = crypto.createHash('md5').update(usuario.senha).digest('hex');
